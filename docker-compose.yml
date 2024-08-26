@@ -4,8 +4,6 @@ networks:
  kong-net:
   driver: bridge
 
- fineract-tier:
-    external: true
 
 services:
 
@@ -13,8 +11,8 @@ services:
   postgres:
     image: postgres:9.6
     restart: always
-    #ports:
-    #  - "5432:5432"
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: hdUbHLM48ufZ48b
     volumes:
@@ -58,12 +56,12 @@ services:
       timeout: 2s
       retries: 15
     ports:
-            #- "80:8000"
-            #- "443:8443"
+       - "80:8000"
+       - "443:8443"
        - "127.0.0.1:8001:8001"
        - "127.0.0.1:8444:8444"
-       - "0.0.0.0:80:8000/tcp"
-       - "0.0.0.0:443:8443/tcp"
+       #- "0.0.0.0:80:8000/tcp"
+       #- "0.0.0.0:443:8443/tcp"
        - "0.0.0.0:9191:8443/tcp"
 
   # konga-database:
